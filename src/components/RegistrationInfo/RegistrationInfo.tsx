@@ -1,8 +1,11 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 export const RegistrationInfo = () => {
     return (
-        <div className="registration">
+      <div className="registration">
         <span>
-          У вас нет аккаунта? <a href="#">Зарегистрироваться</a>
+          У вас нет аккаунта? <Link to="/registration-page" >Зарегистрироваться</Link>
         </span>
         <p>Войти с помощью</p>
         <div className="icons-wrapper">

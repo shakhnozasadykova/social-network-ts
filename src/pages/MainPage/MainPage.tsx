@@ -1,10 +1,9 @@
-import React from "react";
-import "./MainPage.scss";
 import { Header } from "../../components/UI/Header/Header";
+import { MainStyle } from "./MainPage.style";
 
 export const MainPage = () => {
   return (
-    <>
+    <MainStyle>
     <Header />
     <div className="MainPage">
       <aside className="LeftSide">
@@ -724,6 +723,6 @@ export const MainPage = () => {
         </div>
       </aside>
     </div>
-    </>
+    </MainStyle>
   );
 };

@@ -1,13 +1,37 @@
 import React from "react";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
-// import { MainPage } from "./pages/MainPage/MainPage";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const App: React.FC = () => {
+  const router = createBrowserRouter([
+    {
+      path:"/",
+      element:<LoginPage />
+
+    },
+    {
+      path:"/main-page",
+      element:<MainPage />
+    },
+    {
+      path:"profile-page",
+      element:<ProfilePage />
+
+    },
+    {
+      path:"registration-page",
+      element:<RegistrationPage />
+    }
+  ])
   return (
     <div className="App">
       <div className="container">
-        <LoginPage />
-        {/* <MainPage /> */}
+        <RouterProvider router={router} />
+
+       
       </div>
     </div>
   );

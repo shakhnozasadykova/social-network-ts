@@ -1,6 +1,6 @@
 import { ReactHTMLElement} from "react";
 
-interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     buttonLabel: string;
 
 }

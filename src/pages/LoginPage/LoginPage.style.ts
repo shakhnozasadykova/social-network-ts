@@ -1,7 +1,10 @@
-.LoginPage {
+import styled from "styled-components";
+
+export const LoginStyle = styled.div`
+
   box-shadow: 0 0 10px var(--light-gray);
   border-radius: 20px;
-  background-color: var(--elems-bgc);
+  background-color: ${(props)=>props.theme.colors.elemsBgc};
   margin: 0 auto;
   width: 80%;
   max-width: 500px;
@@ -16,7 +19,7 @@
     display: block;
     width: 100%;
     margin-bottom: 20px;
-    border: 2px solid var(--disabled-bgc);
+    border: 2px solid ${(props)=>props.theme.colors.disabledBgc};
     background-color: transparent;
 
     &:last-child {
@@ -24,7 +27,7 @@
     }
 
     &:is(:hover, :focus) {
-      border-color: var(--prime-color);
+      border-color: ${(props)=>props.theme.colors.primeColor};
     }
   }
 
@@ -44,13 +47,11 @@
       text-decoration: underline;
     }
   }
-}
 
 @media (max-width: 530px) {
-  .LoginPage {
     width: 100%;
   }
-}
+
 
 .registration {
   margin-top: 30px;
@@ -105,3 +106,4 @@
     }
   }
 }
+` 
