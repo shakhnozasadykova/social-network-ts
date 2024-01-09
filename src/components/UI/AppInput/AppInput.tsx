@@ -1,4 +1,4 @@
-import { ReactHTMLElement} from "react";
+import { AppInputErrorText, StyledInput } from "./AppInput.style";
 
 interface AppInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasError: boolean;
@@ -10,12 +10,13 @@ export const AppInput = ({
   errorText,
   type,
   required,
-  placeholder
+  placeholder,
+  ...props
 }: AppInputProps) => {
   return (
     <>
-      <input type={type} required={required} placeholder={placeholder} />
-      {hasError && <span>{errorText}</span>}
+      <StyledInput type={type} required={required} placeholder={placeholder} $isError={hasError} {...props} />
+      {hasError && <AppInputErrorText>{errorText}</AppInputErrorText>}
     </>
   );
 };
