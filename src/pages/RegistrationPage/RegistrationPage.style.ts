@@ -14,7 +14,7 @@ export const RegistrationStyle = styled.div`
       margin-bottom: 50px;
     }
 
-    /* input {
+    input {
       display: block;
       width: 100%;
       margin-bottom: 20px;
@@ -28,7 +28,7 @@ export const RegistrationStyle = styled.div`
       &:is(:hover, :focus) {
         border-color: ${(props) => props.theme.colors.primeColor};
       }
-    } */
+    }
 
     button {
       width: 100%;
@@ -46,7 +46,7 @@ export const RegistrationStyle = styled.div`
         text-decoration: underline;
       }
     }
-  
+  }
 
   @media (max-width: 530px) {
     .LoginPage {
@@ -58,7 +58,6 @@ export const RegistrationStyle = styled.div`
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid ${(props) => props.theme.colors.lightGray};
-  }
 
     span {
       display: inline-block;

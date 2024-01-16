@@ -1,7 +1,4 @@
-import styled from "styled-components";
-
-export const MainStyle = styled.div`
-
+.MainPage {
   display: grid;
   grid-template-areas: "L M R";
   grid-template-columns: minmax(300px, 360px) auto minmax(300px, 360px);
@@ -26,9 +23,10 @@ export const MainStyle = styled.div`
       margin-bottom: 20px;
     }
   }
-
+}
 
 @media (max-width: 1440px) {
+  .MainPage {
     grid-template-areas: "L M";
     grid-template-columns: 290px auto;
 
@@ -36,7 +34,7 @@ export const MainStyle = styled.div`
       display: none;
     }
   }
-
+}
 
 @media (max-width: 730px) {
   .MainPage {
@@ -820,4 +818,3 @@ export const MainStyle = styled.div`
     }
   }
 }
-`

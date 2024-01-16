@@ -1,11 +1,16 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-export const RegistrationInfo = () => {
-    return (
-      <div className="registration">
+type RegistrationInfoType = {
+  path: string,
+  text: string,
+  text2: string
+}
+
+export const RegistrationInfo = ({path, text, text2}: RegistrationInfoType) =>{
+    return(
+        <div className="registration">
         <span>
-          У вас нет аккаунта? <Link to="/registration-page" >Зарегистрироваться</Link>
+          {text}<Link to={path}>{text2}</Link>
         </span>
         <p>Войти с помощью</p>
         <div className="icons-wrapper">
@@ -23,5 +28,5 @@ export const RegistrationInfo = () => {
           </a>
         </div>
       </div>
-    )
-}
+    );
+};

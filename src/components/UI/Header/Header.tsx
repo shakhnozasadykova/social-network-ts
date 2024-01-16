@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./Header.scss";
 import { Link } from "react-router-dom";
+import "./Header.scss";
 
 export const Header = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -82,11 +82,11 @@ export const Header = () => {
           />
         </svg>
         <Link to="/profile-page">
-        <img
-          className="_no-select"
-          src="./img/users/andrey-kashirskiy.jpeg"
-          alt="Profile"
-        />
+          <img
+            className="_no-select"
+            src="./img/users/andrey-kashirskiy.jpeg"
+            alt="Profile"
+          />
         </Link>
         <svg
           className="icon icon-arrow _active"
