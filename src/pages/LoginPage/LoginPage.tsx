@@ -10,15 +10,6 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLoginUserMutation } from '../../store/api/authApi';
 
-// const mockUser = {
-//   mail: 'geremy@email.com',
-//   phone_number: '98589565',
-//   user_id: 1,
-//   name: 'Vasya',
-//   reg_date: new Date().toISOString,
-//   city: 'Mahachkala',
-// };
-
 const loginPageFields = {
   userEmail: '',
   userPassword: '',

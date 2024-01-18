@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import "./LoginPage.scss";
 import { Heading } from "../../components/Typography/Heading/Heading";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
 import { AppButton } from "../../components/UI/AppButton/AppButton";
@@ -9,20 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch, useSelector } from "react-redux";
-import { authUser } from "../../store/authSlice";
-import { setUser } from "../../store/authSlice";
-import { RootState } from "../../store/store";
-
-const mockUser = {
-  mail: 'geremy@email.com',
-  phone_number: '98589565',
-  user_id: 1,
-  name: 'Vasya',
-  reg_date: new Date().toISOString,
-  city: 'Mahachkala'
-
-}
+import { useRegisterUserMutation } from "../../store/api/authApi";
 
 const registrationPageFields = {
   userName: "",
@@ -42,8 +28,11 @@ const registrationValidationSchema = yup.object({
     .string()
     .required("Обязательное поле")
     .min(4, "Пароль должен содержать как минимум 4 символа"),
-  userPhoneNumber: yup.string().required("Обязательное поле").matches(/^9989\d{8}$/, "Номер не валиден"),
-  userCity: yup.string().required("Обязательное поле")
+  userPhoneNumber: yup
+    .string()
+    .required("Обязательное поле")
+    .matches(/^9989\d{8}$/, "Номер не валиден"),
+  userCity: yup.string().required("Обязательное поле"),
 });
 
 export const RegistrationPage = () => {
@@ -55,31 +44,32 @@ export const RegistrationPage = () => {
     defaultValues: registrationPageFields,
     resolver: yupResolver(registrationValidationSchema),
   });
-
-  const user = useSelector((state: RootState) => state.authSlice.user)
-  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
 
-  const onLoginFormSubmit = (data: any) => {
-    // console.log(data);
-    // if (data) {
-    //   navigate("/main-page");
-    // }
-    dispatch(authUser(mockUser));
-    dispatch(setUser(mockUser));
+  const [registrationUser, { data: userData }] = useRegisterUserMutation();
+
+  const onRegistrationFormSubmit = (data: any) => {
+    registrationUser({
+      name: data.userName,
+      email: data.userEmail,
+      phone_number: data.userPhoneNumber,
+      password: data.userPassword,
+      user_city: data.userCity,
+    });
   };
 
-  useEffect(() =>{
-    console.log('USER: ', user)
-    if(user?.user_id) {
-      navigate('/main-page')
+  useEffect(() => {
+    console.log("USER: ", userData);
+    if (userData?.user_id) {
+      navigate("/login-page");
     }
-  }, [user, navigate])
+  }, [userData, navigate]);
 
   return (
     <RegistrationStyle>
       <Heading headingType="h1" headingText="Регистрация" />
-      <form onSubmit={handleSubmit(onLoginFormSubmit)}>
+      <form onSubmit={handleSubmit(onRegistrationFormSubmit)}>
         <Controller
           name="userName"
           control={control}
